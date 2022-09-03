@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Мы кодеры</title>
+
+	<script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
+
+	<style>
+		*,body,html{
+			margin:  0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		#shortcut {
+			display: flex;
+			list-style: none;
+			gap: 1rem;
+			flex-wrap: wrap;
+		}
+		#shortcut > li{
+			border-bottom: 1px dotted grey;
+		}
+
+		#shortcut > li:hover{
+			cursor: pointer;
+			border-bottom: 1px solid black;
+		}
+		
+		nav{
+			padding: 1rem;
+			gap: 1rem;
+			display: flex;
+			flex-direction: column;
+			background-color: #e2e2e2;
+		}
+
+		.markdown-body{
+			width: fit-content !important;
+			margin: auto !important;
+		}
+		#content {
+			margin-top: 1rem !important;
+			margin-bottom: 1rem !important;
+			width: 70vw;
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		#content::after {
+			border: 1px solid black;
+		}
+
+		#content > * {
+			border: 1px solid black;
+			padding: 0.5rem;
+			background-color: aliceblue;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<div>
+			<h2>Мы кодеры</h2>
+			<input
+			placeholder="Поиск"
+			type="text" 
+			name="code-search" 
+			id="cd1" 
+			oninput="infer_search_type(this.value)"
+			>
+		</div>
+		<ul id="shortcut"></ul>
+	</nav>
+	<div id="content"></div>
+</body>
+
+
+<script>
+	known_codes = [
+		// 100
+		100,
+		101,
+		102,
+		103,
+
+		//200
+		200,
+		201,
+		202,
+		203,
+		204,
+
+		//300
+		300,
+
+		//400
+		400,
+
+		//500
+		500
+	]
+
+	for (let code of known_codes) {
+		let li = document.createElement('li')
+		li.innerText = code
+		li.setAttribute('code', code)
+		li.onclick = () => {
+			loadDesc([code])
+		}
+		document.getElementById('shortcut').append(li)
+	}
+</script>
+<script src="json_data.js"></script>
+<script src="main.js"></script>
+</html>
